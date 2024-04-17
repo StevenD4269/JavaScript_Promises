@@ -16,19 +16,19 @@ function getList() {
 }
 
 // Exercise 1: Select the Needed DOM Elements
-const errorParagraph = document.getElementById("error");
+const errorPara = document.getElementById("error");
 const hobbitsList = document.getElementById("list");
 
 // TODO: Handle the resolved or rejected states of the promise
 // Exercise 2: Handle the Promise
-getList()
+getList() //You dont need to write function here because exists already
   .then((result) => {
     console.log(result); // Logging the resolved value to console
-    return result; // Return the resolved value for chaining
+    return result; // Return the resolved value
   })
   .catch((error) => {
     console.log(error); // Logging the resolved failure object to console
-    throw error; // Rethrow the error for further handling
+    throw error; // "Rethrow" the error for further handling
   });
 
 // Exercise 3: Update the DOM
@@ -41,5 +41,5 @@ getList()
     });
   })
   .catch((error) => {
-    errorParagraph.textContent = error.message; // Displaying error message in the paragraph
+    errorPara.textContent = error.message; // Displaying error message in the paragraph
   });
