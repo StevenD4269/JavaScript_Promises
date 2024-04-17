@@ -19,25 +19,28 @@ function getList() {
 const errorPara = document.getElementById("error");
 const hobbitsList = document.getElementById("list");
 
-// TODO: Handle the resolved or rejected states of the promise
 // Exercise 2: Handle the Promise
-getList() //You dont need to write function here because exists already
+// getList is the promise, the .then and .catch are now telling it when to return those promises and which one to return
+// ex: getList().then().catch() is the template
+getList() //You dont need to write function here because it exists already
   .then((result) => {
-    console.log(result); // Logging the resolved value to console
+    //(result) => {} is the callback function
+    console.log(result); // Logging the result to console
     return result; // Return the resolved value
   })
   .catch((error) => {
-    console.log(error); // Logging the resolved failure object to console
+    console.log(error); // console logging the value
     throw error; // "Rethrow" the error for further handling
   });
 
 // Exercise 3: Update the DOM
+// .forEach will iterate through the array
 getList()
   .then((result) => {
     result.forEach((hobbit) => {
       const li = document.createElement("li");
       li.textContent = hobbit;
-      hobbitsList.appendChild(li); // Appending li to the ul
+      hobbitsList.appendChild(li); // Appending li to the ul using the hobbitsList I created
     });
   })
   .catch((error) => {
