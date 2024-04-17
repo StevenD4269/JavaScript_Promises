@@ -15,10 +15,31 @@ function getList() {
   });
 }
 
+// Exercise 1: Select the Needed DOM Elements
+const errorParagraph = document.getElementById("error");
+const hobbitsList = document.getElementById("list");
+
 // TODO: Handle the resolved or rejected states of the promise
+// Exercise 2: Handle the Promise
+getList()
+  .then((result) => {
+    console.log(result); // Logging the resolved value to console
+    return result; // Return the resolved value for chaining
+  })
+  .catch((error) => {
+    console.log(error); // Logging the resolved failure object to console
+    throw error; // Rethrow the error for further handling
+  });
 
-// TODO: If the promise resolves with the list of hobbits
-// Render the list of hobbits as list items within the unordered list with id="list" (check the index.html file)
-
-// TODO: If the promise rejects with the failure object
-// Display the failure message in the paragraph element with id="error" (check index.html file)
+// Exercise 3: Update the DOM
+getList()
+  .then((result) => {
+    result.forEach((hobbit) => {
+      const li = document.createElement("li");
+      li.textContent = hobbit;
+      hobbitsList.appendChild(li); // Appending li to the ul
+    });
+  })
+  .catch((error) => {
+    errorParagraph.textContent = error.message; // Displaying error message in the paragraph
+  });
